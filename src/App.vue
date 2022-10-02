@@ -1,16 +1,24 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+      <img alt="Vue logo" src="./assets/Hourglass.png">
+      <ToggleConfig msg="Time Tracker Config Manager"></ToggleConfig>
+      <Toggles msg="Toggles"  />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+//:switches='[{label: "Clock In",checked:true,timestamp:"12:00:00"}]'
+import ToggleConfig from './components/ToggleConfig.vue';
+import Toggles from './components/Toggles.vue';
+import Switch from './components/Switch.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    ToggleConfig,
+    Toggles,
+    Switch
+}
 }
 </script>
 
