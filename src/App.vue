@@ -7,10 +7,6 @@
 </template>
 
 <script>
-//:switches='[{label: "Clock In",checked:true,timestamp:"12:00:00"}]'
-import ToggleConfig from './components/ToggleConfig.vue';
-import Toggles from './components/Toggles.vue';
-import Switch from './components/Switch.vue'
 
 export default {
   name: 'App',

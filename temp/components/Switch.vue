@@ -11,7 +11,7 @@
     }
 </script>
 <style>
-    .switch {
+    /* .switch {
         position: relative;
         display: inline-block;
         width: 60px;
@@ -27,5 +27,5 @@
         background-color: #ccc;
         -webkit-transition: .4s;
         transition: .4s;
-    }
+    } */
 </style>
