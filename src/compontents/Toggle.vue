@@ -1,5 +1,8 @@
 <template>
   <label class="container">
+   
+    <span class="toggleName">{{toggleName}}</span>
+
     <input
       v-bind="$attrs"
       class="input"
@@ -7,23 +10,23 @@
       :checked="checked"
       @change="$emit('update:checked', $event.target.checked)"
     />
+
     <span class="toggle"></span>
-    <span class="label">{{ label }}</span>
+    
   </label>
 </template>
   
   <script>
     export default {
       name: "Toggle",
-      
       props: {
-        label: {
+        toggleName: {
           type: String,
           required: true,
         },
         checked: {
           type: Boolean,
-          required: true,
+          default:false
         },
       },
     };
@@ -34,8 +37,8 @@
       display: flex;
       align-items: center;
     }
-    .label {
-      margin-left: 12px;
+    .toggleName {
+      margin-right: 12px;
       color: #1a202c;
       /* Show an ellipsis if the text takes more than one line */
       overflow: hidden;

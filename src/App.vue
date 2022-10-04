@@ -1,12 +1,28 @@
 <template>
   <div>
     <img alt="Vue logo" src="./assets/Hourglass.png">
-    <form @submit.prevent="addToggle" data-testid="add-toggle">
-      <input type="text" v-model="toggleLabel"/>
-      <button>Add Toggle</button>
-    </form>
-    
-    <!-- <Toggle class ="toggles" v-model:checked="shouldReceiveNewsletter" label="Toggle Label" /> -->
+    <form @submit.prevent="addToggleToStore">
+        <input type="text" v-model="toggleName" />
+        <button>Add</button>
+      </form>
+        <Toggle :toggleName="item.toggleName" v-for="item in toggleStore.toggles" :key="item.label" class="toggles"/>
+      <!-- <ul >
+          <li v-for="item in toggleStore.toggles" :key="item.label">
+            <Toggle :label="item.label"/>
+            <button
+              @click="toggleStore.removeToggle(item.uuid)"
+              type="button"
+            >X</button>
+          </li>
+        </ul> -->
+
+       
+        <button
+          :disabled="!toggleStore.toggles.length"
+          @click="emptyToggleStore"
+          type="button"
+        >Clear all toggles</button>
+
   </div>
 </template>
 
@@ -22,24 +38,31 @@
   export default {
     name: 'App',
     components: {
-      Toggle
+      Toggle,
     },
     setup() {
-      const toggles = useToggleStore()
-      const toggleLabel = ref('')
+      const toggleStore = useToggleStore()
+      const toggleName = ref('')
 
-      function addToggle() {
-        if (!toggleLabel.value) return
-        cart.addItem(toggleLabel.value)
-        toggleLabel.value = ''
+      function addToggleToStore() {
+      if (!toggleName.value) return
+      toggleStore.addItem(toggleName.value)
+      toggleName.value = ''
+    }
+
+      function emptyToggleStore() {
+        if (window.confirm('Are you sure you want to clear the cart?')) {
+          toggleStore.clearToggles();
+        }
       }
       window.stores = {
-        toggles
+        toggleStore
       }
       return {
-        toggles,
-        toggleLabel,
-        addToggle
+        toggleStore,
+        toggleName,
+        emptyToggleStore,
+        addToggleToStore
       }
     },
   }
@@ -57,5 +80,6 @@
 
   .toggles {
     justify-content: center;
+    margin:10px
   }
 </style>
