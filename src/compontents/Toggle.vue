@@ -1,8 +1,6 @@
 <template>
   <label class="container">
-   
     <span class="toggleName">{{toggleName}}</span>
-
     <input
       v-bind="$attrs"
       class="input"
@@ -10,27 +8,36 @@
       :checked="checked"
       @change="$emit('update:checked', $event.target.checked)"
     />
-
     <span class="toggle"></span>
+    <span class="timeStamp" v-if="checked">{{timeStamp}}</span>
+
+    
     
   </label>
 </template>
   
   <script>
-    export default {
-      name: "Toggle",
-      props: {
-        toggleName: {
-          type: String,
-          required: true,
-        },
-        checked: {
-          type: Boolean,
-          default:false
-        },
-      },
-    };
-  </script>
+
+export default {
+  name: "Toggle",
+  props: {
+    toggleName: {
+      type: String,
+      required: true,
+    },
+    checked: {
+      type: Boolean,
+      default:false
+    },
+    uuid:{
+      type:String,
+    },
+    timestamp:{
+      type: Date
+    }
+  },
+};
+</script>
 <style scoped>
     .container {
       cursor: pointer;

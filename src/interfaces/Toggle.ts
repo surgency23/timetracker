@@ -1,6 +1,6 @@
 export interface Toggle{
     toggleName:string,
     uuid:string,
-    timeStamp:string,
+    timeStamp:Date,
     checked:boolean
 }
