@@ -9,15 +9,11 @@
       @change="$emit('update:checked', $event.target.checked)"
     />
     <span class="toggle"></span>
-    <span class="timeStamp" v-if="checked">{{timeStamp}}</span>
-
-    
-    
+    <!-- <span class="timestamp" v-if="checked==true"></span>{{}} -->
   </label>
 </template>
   
   <script>
-
 export default {
   name: "Toggle",
   props: {
@@ -42,8 +38,14 @@ export default {
     .container {
       cursor: pointer;
       display: flex;
-      align-items: center;
+      justify-content: center;
+      
     }
+    .timestamp{
+      margin-left: 12px;
+      
+    }
+
     .toggleName {
       margin-right: 12px;
       color: #1a202c;
@@ -54,7 +56,7 @@ export default {
     }
     /* Visually hide the checkbox input */
     .input {
-      position: absolute;
+      
       width: 1px;
       height: 1px;
       padding: 0;
@@ -65,6 +67,7 @@ export default {
       border-width: 0;
     }
     .toggle {
+      
       --toggle-container-width: 50px;
       --toggle-size: calc(var(--toggle-container-width) / 2);
       --light-gray: #e2e8f0;
@@ -74,7 +77,7 @@ export default {
       --dark-teal: #319795;
       /* Vertically center the inner circle */
       display: flex;
-      align-items: center;
+    
       position: relative;
       height: var(--toggle-size);
       flex-basis: var(--toggle-container-width);

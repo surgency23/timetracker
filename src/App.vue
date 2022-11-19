@@ -12,7 +12,6 @@
       </div>
     </form>
     <button :disabled="!toggleStore.toggles.length" @click="emptyToggleStore" type="button">Clear all toggles</button>
-
   </div>
 </template>
 
@@ -45,7 +44,7 @@
       }
 
       function emptyToggleStore() {
-        if (window.confirm('Are you sure you want to clear the cart?')) {
+        if (window.confirm('Are you sure you want to clear all toggles?')) {
           toggleStore.clearToggles();
         }
       }
@@ -64,6 +63,9 @@
 </script>
 
 <style>
+.toggles{
+  /* border:2px solid red; */
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

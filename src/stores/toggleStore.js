@@ -1,31 +1,38 @@
-import { defineStore, acceptHMRUpdate } from 'pinia'
+import {
+    defineStore,
+    acceptHMRUpdate
+} from 'pinia'
 
 export const useToggleStore = defineStore({
-    id:'toggles',
+    id: 'toggles',
     state: () => ({
-       rawToggles: [],
+        rawToggles: [],
     }),
-    getters:{
-        toggles:(state) => {
+    getters: {
+        toggles: (state) => {
             return state.rawToggles
         }
     },
-    actions:{
+    actions: {
         /**
          * @param {string} toggleName
          * @param {string} uuid
          */
-    addItem(toggleName,uuid){
-        this.rawToggles.push({toggleName:toggleName,uuid:uuid,timeStamp:"temp", checked:false});
-    },
-    removeToggle(toggleuuid){
-        console.log("in removeToggle");
-        this.rawToggles = this.rawToggles.filter((toggle) => toggle.uuid !== toggleuuid);
-    },
-    clearToggles(){
-        this.rawToggles = [];
+        addItem(toggleName, uuid) {
+            this.rawToggles.push({
+                toggleName: toggleName,
+                uuid: uuid,
+                timeStamp: "temp",
+                checked: false
+            });
+        },
+        removeToggle(toggleuuid) {
+            console.log("in removeToggle");
+            this.rawToggles = this.rawToggles.filter((toggle) => toggle.uuid !== toggleuuid);
+        },
+        clearToggles() {
+            this.rawToggles = [];
+        }
     }
 
-    }
-    
 })
